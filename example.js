@@ -8,13 +8,16 @@ const channels = {};
 const bodyparser = require('body-parser');
 
 app.use(bodyparser.json())
+/**
+ * coucou
+ */
 
 app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/example.html');
 });
 
 app.post('/api/gitlab', (req, res) => {
-  console.log(req.body);
+  console.log(req.payload);
   io.emit('gitlab_event', req.body);
   res.status(200).send();
 });
