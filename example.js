@@ -8,9 +8,7 @@ const channels = {};
 const bodyparser = require('body-parser');
 
 app.use(bodyparser.json())
-/**
- * coucou
- */
+
 
 app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/example.html');
