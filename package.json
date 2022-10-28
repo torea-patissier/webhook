@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/torea-patissier/webhook#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "http": "^0.0.1-security",
     "ngrok": "^4.3.3",

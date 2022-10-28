@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/client.html');
 });
 
+// app.post('/api/gitlab', (req, res) => {
+//   console.log(req.body);
+//   io.emit('gitlab_event', req.body);
+//   res.status(204).send();
+// });
+
 io.on('connection', (socket) => {
 
   io.to(socket.id).emit('users', sockets.map(s => s.username));
@@ -31,6 +37,8 @@ io.on('connection', (socket) => {
     typing[channel].push({ username, now, socket: socket.id });
 
     typing[channel] = typing[channel].filter(t => t.now > now - 2000);
+    // console.log(typing[channel]);
+    // console.log(typing[channel].map(t => t.username));
     socket.to(channel).emit('is_typing', { usernames: typing[channel].map(t => t.username) });
   });
 

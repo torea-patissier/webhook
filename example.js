@@ -5,6 +5,9 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const channels = {};
+const bodyparser = require('body-parser');
+
+app.use(bodyparser.json())
 
 app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/example.html');
