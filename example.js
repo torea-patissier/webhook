@@ -9,13 +9,12 @@ const bodyparser = require('body-parser');
 
 app.use(bodyparser.json())
 
-
 app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/example.html');
 });
 
 app.post('/api/gitlab', (req, res) => {
-  console.log(req.payload);
+  console.log(req.body);
   io.emit('gitlab_event', req.body);
   res.status(200).send();
 });
